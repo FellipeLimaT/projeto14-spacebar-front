@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 
+
 import logoheader from "./assets/logoSmall.png";
 import Menu from "./Menu.js";
 
@@ -21,16 +22,17 @@ export default function Header() {
             alert(`Logado como ${userInfo.name}`);
         }
     }
-
+console.log(menu)
     return (
         <Head>
-            {/* <Menu menu={menu} setMenu={setMenu} /> */}
             <Topo>
 
+               {menu?
+              <Menu/>:
                 <Topo_Esquerda>
                     <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
-                    <Logo src={logoheader} onClick={() => { nav("/") }}></Logo>                    
-                </Topo_Esquerda>
+                    <Logo src={logoheader} onClick={() => { nav("/") }}></Logo>                  
+                </Topo_Esquerda>}
 
                 <SearchBar placeholder="Pesquisar..."></SearchBar>
 
@@ -119,3 +121,5 @@ const SearchBar = styled.input`
     padding-left: 8px;
     
 `
+
+// <Menu menu={menu} setMenu={setMenu} />

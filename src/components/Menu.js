@@ -6,9 +6,9 @@ import { CategoriaBebidas } from "../contexts/BebidasContext.js";
 
 export default function Menu({ menu, setMenu }) {
     
-    const nav = useNavigate();
-    const {categorias} = useContext(CategoriaBebidas)
-    categorias.sort();
+    // const nav = useNavigate();
+    // const {categorias} = useContext(CategoriaBebidas)
+    // categorias.sort();
 
     function categoriaClick(categoriaURL){
         setMenu(false);
@@ -21,12 +21,13 @@ export default function Menu({ menu, setMenu }) {
                 <Head>
                     <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
                 </Head>
-                {categorias.map( (categoria, index) => {
+                {/* {categorias.map( (categoria, index) => {
                     const categoriaURL = categoria.toLowerCase();
                     return <Categoria onClick={() => categoriaClick(categoriaURL)} key={index}>{categoria}</Categoria>
-                })}
+                })} */}
+                "ola mundo, estou aqui"
             </Aside>
-            <TelaMenuAberta menu={menu} onClick={() => setMenu(false)}></TelaMenuAberta>
+            {/* <TelaMenuAberta menu={menu} onClick={() => setMenu(false)}></TelaMenuAberta> */}
         </div>
     );
 }
@@ -35,7 +36,7 @@ const Aside = styled.aside`
     position: fixed;
     z-index: 3;
     top: 0;
-    left: ${({ menu }) => menu ? "0" : "-70%"};
+
     width: 70%;
     height: 100vh;
     background-color: #FFFFFF;
@@ -50,9 +51,9 @@ const Categoria = styled.div`
     color: #064973;
     cursor: pointer;
 `
-
+// display: ${({ menu }) => menu ? "block" : "none"};
 const TelaMenuAberta = styled.div`
-    display: ${({ menu }) => menu ? "block" : "none"};
+
     position: fixed;
     top: 0;
     z-index: 2;
@@ -75,3 +76,5 @@ const Head = styled.div`
         cursor: pointer;
     };
 `;
+
+// left: ${(props)=>props.menu=== true? "0" : "-70%"};
