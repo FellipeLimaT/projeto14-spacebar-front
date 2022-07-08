@@ -21,16 +21,18 @@ export default function Header() {
             alert(`Logado como ${userInfo.name}`);
         }
     }
-
+console.log(menu)
     return (
         <Head>
             {/* <Menu menu={menu} setMenu={setMenu} /> */}
             <Topo>
-
-                <Topo_Esquerda>
+                {menu ? <Topo_Esquerda>
+                    <Menu />
+                    </ Topo_Esquerda> :
+                    < Topo_Esquerda>
                     <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
-                    <Logo src={logoheader} onClick={() => { nav("/") }}></Logo>                    
-                </Topo_Esquerda>
+                    <Logo src={logoheader} onClick={() => { nav("/") }}></Logo>                 
+                </Topo_Esquerda>}
 
                 <SearchBar placeholder="Pesquisar..."></SearchBar>
 

@@ -6,9 +6,11 @@ import { CategoriaBebidas } from "../contexts/BebidasContext.js";
 
 export default function Menu({ menu, setMenu }) {
     
-    const nav = useNavigate();
+ /*    const nav = useNavigate();
     const {categorias} = useContext(CategoriaBebidas)
     categorias.sort();
+
+    console.log(categorias) */
 
     function categoriaClick(categoriaURL){
         setMenu(false);
@@ -21,12 +23,14 @@ export default function Menu({ menu, setMenu }) {
                 <Head>
                     <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
                 </Head>
-                {categorias.map( (categoria, index) => {
+                {/* {categorias.map( (categoria, index) => {
                     const categoriaURL = categoria.toLowerCase();
                     return <Categoria onClick={() => categoriaClick(categoriaURL)} key={index}>{categoria}</Categoria>
-                })}
+                })} */}
+                "Ola mundo"
             </Aside>
-            <TelaMenuAberta menu={menu} onClick={() => setMenu(false)}></TelaMenuAberta>
+           {/*  <LadoOpacoMenu menu={menu} onClick={() => setMenu(false)}></LadoOpacoMenu> */}
+            
         </div>
     );
 }
@@ -51,7 +55,7 @@ const Categoria = styled.div`
     cursor: pointer;
 `
 
-const TelaMenuAberta = styled.div`
+const LadoOpacoMenu = styled.div`
     display: ${({ menu }) => menu ? "block" : "none"};
     position: fixed;
     top: 0;
