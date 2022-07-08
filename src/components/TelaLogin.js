@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import logo from './assets/logo.jpg'
+
 export default function TelaLogin() {
 
-    const [email, setEmail] = useState()
-    const [senha, setSenha] = useState()
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
 
     const navigate = useNavigate();
 
