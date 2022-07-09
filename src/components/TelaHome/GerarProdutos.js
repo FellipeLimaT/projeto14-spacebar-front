@@ -1,9 +1,6 @@
 
 import styledComponents from "styled-components"
-import Vinho from './Vinho.js'
-import Cerveja from "./Cerveja.js"
-import Whisky from "./Whisky.js"
-import Gin from "./Gin.js"
+import Produtos from "./Produtos"
 import { useState } from "react"
 import axios from "axios"
 
@@ -14,10 +11,7 @@ export default function GerarProdutos() {
         <ContainerProduto>
 
             <Produto>
-              < Vinho/>
-              <Cerveja/>
-              <Whisky/>
-              <Gin/>
+              <Produtos />
             </Produto>
 
     </ContainerProduto>

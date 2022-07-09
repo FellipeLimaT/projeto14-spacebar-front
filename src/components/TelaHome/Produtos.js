@@ -5,24 +5,24 @@ import { useEffect } from "react"
 import axios from "axios"
 
 
-export default function Vinho() {
+export default function Produtos() {
 
-    const {listaProdutos, 
+    const { listaProdutos,
         setListaProdutos,
-        vinho, 
+        vinho,
         setVinho,
-        cerveja, 
+        cerveja,
         setCerveja,
-        whisky, 
+        whisky,
         setWhisky,
-        gin, 
+        gin,
         setGin,
         carrinho,
-         setCarrinho,
-         quantidadeCarrinho, 
-         setQuantidadeCarrinho } = useContext(BebidasContext)
+        setCarrinho,
+        quantidadeCarrinho,
+        setQuantidadeCarrinho } = useContext(BebidasContext)
 
-         const [novaLista, setNovaLista] = useState([])
+    const [novaLista, setNovaLista] = useState([])
 
     const URL = "http://localhost:5000/produtos"
     let atualizacao;
@@ -41,17 +41,17 @@ export default function Vinho() {
                 quantidade: 0
             }
         })
-setNovaLista(nova)
+        setNovaLista(nova)
         gerarCategorias(nova)
 
     }
 
-    function gerarCategorias(novaLista){
+    function gerarCategorias(novaLista) {
 
-        const gerarVinho = novaLista.filter(produto=> produto.categoria==="vinho")
-        const gerarCerveja = novaLista.filter(produto=> produto.categoria==="cerveja")
-        const gerarGin = novaLista.filter(produto=> produto.categoria==="whisky")
-        const gerarWhsiky = novaLista.filter(produto=> produto.categoria==="gin")
+        const gerarVinho = novaLista.filter(produto => produto.categoria === "vinho")
+        const gerarCerveja = novaLista.filter(produto => produto.categoria === "cerveja")
+        const gerarGin = novaLista.filter(produto => produto.categoria === "whisky")
+        const gerarWhsiky = novaLista.filter(produto => produto.categoria === "gin")
         setVinho(gerarVinho)
         setCerveja(gerarCerveja)
         setWhisky(gerarWhsiky)
@@ -83,8 +83,8 @@ setNovaLista(nova)
             }
         })
         setNovaLista(atualizacao)
-gerarCategorias(atualizacao)
-        
+        gerarCategorias(atualizacao)
+
     }
     function colocarNoCarrinho(produto) {
 
@@ -142,76 +142,76 @@ gerarCategorias(atualizacao)
     return (
         <ContainerPrincipal>
             <ContainerProduto>
-             {vinho.map((produto, index) => <Produto>
-                <button><img src={produto.imagem} /></button>
-                <h5>Preço: R${produto.valor}</h5>
-                <Botoes>
-                    <button onClick={() => aumentar(produto)}>+</button>
-                    <h3>{produto.quantidade}</h3>
-                    <button onClick={() => diminuir(produto)}>-</button>
-                </Botoes>
-                <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
-                <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
+                {vinho.map((produto, index) => <Produto>
+                    <button><img src={produto.imagem} /></button>
+                    <h5>Preço: R${produto.valor}</h5>
+                    <Botoes>
+                        <button onClick={() => aumentar(produto)}>+</button>
+                        <h3>{produto.quantidade}</h3>
+                        <button onClick={() => diminuir(produto)}>-</button>
+                    </Botoes>
+                    <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
+                    <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
-            </Produto>
-            )
-        }
+                </Produto>
+                )
+                }
 
-        </ContainerProduto>
+            </ContainerProduto>
 
-<ContainerProduto>
-{cerveja.map((produto, index) => <Produto>
-   <button><img src={produto.imagem} /></button>
-   <h5>Preço: R${produto.valor}</h5>
-   <Botoes>
-       <button onClick={() => aumentar(produto)}>+</button>
-       <h3>{produto.quantidade}</h3>
-       <button onClick={() => diminuir(produto)}>-</button>
-   </Botoes>
-   <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
-   <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
+            <ContainerProduto>
+                {cerveja.map((produto, index) => <Produto>
+                    <button><img src={produto.imagem} /></button>
+                    <h5>Preço: R${produto.valor}</h5>
+                    <Botoes>
+                        <button onClick={() => aumentar(produto)}>+</button>
+                        <h3>{produto.quantidade}</h3>
+                        <button onClick={() => diminuir(produto)}>-</button>
+                    </Botoes>
+                    <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
+                    <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
-</Produto>
-)
-}
+                </Produto>
+                )
+                }
 
-</ContainerProduto>
+            </ContainerProduto>
 
-<ContainerProduto>
-{whisky.map((produto, index) => <Produto>
-   <button><img src={produto.imagem} /></button>
-   <h5>Preço: R${produto.valor}</h5>
-   <Botoes>
-       <button onClick={() => aumentar(produto)}>+</button>
-       <h3>{produto.quantidade}</h3>
-       <button onClick={() => diminuir(produto)}>-</button>
-   </Botoes>
-   <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
-   <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
+            <ContainerProduto>
+                {whisky.map((produto, index) => <Produto>
+                    <button><img src={produto.imagem} /></button>
+                    <h5>Preço: R${produto.valor}</h5>
+                    <Botoes>
+                        <button onClick={() => aumentar(produto)}>+</button>
+                        <h3>{produto.quantidade}</h3>
+                        <button onClick={() => diminuir(produto)}>-</button>
+                    </Botoes>
+                    <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
+                    <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
-</Produto>
-)
-}
+                </Produto>
+                )
+                }
 
-</ContainerProduto>
+            </ContainerProduto>
 
-<ContainerProduto>
-{gin.map((produto, index) => <Produto>
-   <button><img src={produto.imagem} /></button>
-   <h5>Preço: R${produto.valor}</h5>
-   <Botoes>
-       <button onClick={() => aumentar(produto)}>+</button>
-       <h3>{produto.quantidade}</h3>
-       <button onClick={() => diminuir(produto)}>-</button>
-   </Botoes>
-   <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
-   <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
+            <ContainerProduto>
+                {gin.map((produto, index) => <Produto>
+                    <button><img src={produto.imagem} /></button>
+                    <h5>Preço: R${produto.valor}</h5>
+                    <Botoes>
+                        <button onClick={() => aumentar(produto)}>+</button>
+                        <h3>{produto.quantidade}</h3>
+                        <button onClick={() => diminuir(produto)}>-</button>
+                    </Botoes>
+                    <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
+                    <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
-</Produto>
-)
-}
+                </Produto>
+                )
+                }
 
-</ContainerProduto>
+            </ContainerProduto>
         </ContainerPrincipal>
 
     )

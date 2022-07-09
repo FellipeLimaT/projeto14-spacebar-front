@@ -1,23 +1,23 @@
 import { useContext, useState } from "react"
-import BebidasContext from "../../contexts/BebidasContext"
+import BebidasContext from "../contexts/BebidasContext"
 import styledComponents from "styled-components"
 import { useEffect } from "react"
 import axios from "axios"
 
 
-export default function Whisky() {
-const [whisky, setWhisky] = useState([])
-const URL = "http://localhost:5000/whisky"
+export default function Cerveja() {
+const {cerveja, setCerveja} = useContext(BebidasContext)
+const URL = "http://localhost:5000/cerveja"
 
 useEffect(()=>{
     const promiseGet = axios.get(URL)
-    promiseGet.then((res)=>setWhisky(res.data))
+    promiseGet.then((res)=>setCerveja(res.data))
     promiseGet.catch((res)=>console.log("deu ruim"))
 },[])
 
     return (
         <ContainerProduto>
-            {whisky.map((produto) => <Produto>
+            {cerveja.map((produto) => <Produto>
                 <button>
                 <img src={produto.imagem}/>
                 <h5>Preço: R${produto.valor}</h5>
@@ -42,4 +42,4 @@ img{
 
 const ContainerProduto = styledComponents.div`
 display:flex;
-flex-direction:row;`
+flex-direction:column;`

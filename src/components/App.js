@@ -21,6 +21,7 @@ function App() {
    const [listaProdutos, setListaProdutos] = useState()
    const [carrinho, setCarrinho] = useState([])
    const [quantidadeCarrinho, setQuantidadeCarrinho] = useState([])
+   const [categoriaEscolhida, setCategoria] = useState("")
 
     return (
     

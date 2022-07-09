@@ -1,25 +1,25 @@
 import { useContext, useState } from "react"
-import BebidasContext from "../../contexts/BebidasContext.js"
+import BebidasContext from "../contexts/BebidasContext.js"
 import styledComponents from "styled-components"
 import { useEffect } from "react"
 import axios from "axios"
 
 
-export default function Gin() {
-const [gin, setGin] = useState([])
-const URL = "http://localhost:5000/gin"
+export default function Vinho() {
+const { setVinho, vinho } = useContext(BebidasContext)
+const URL = "http://localhost:5000/vinho"
 
 
 const { setCarrinho, carrinho, quantidadeCarrinho, setQuantidadeCarrinho } = useContext(BebidasContext)
 
 useEffect(()=>{
     const promiseGet = axios.get(URL)
-    promiseGet.then((res)=>gerarGin(res))
+    promiseGet.then((res)=>gerarvinho(res))
     promiseGet.catch((res)=>console.log("deu ruim"))
 },[])
 
 
-function gerarGin(res) {
+function gerarvinho(res) {
     const lista = res.data
     const novaLista = lista.map(produto => {
         return {
@@ -28,25 +28,25 @@ function gerarGin(res) {
             quantidade: 0
         }
     })
-    setGin(novaLista)
+    setVinho(novaLista)
 }
 function aumentar(produto) {
 
-   const atualizacao = gin.map(elemento => {
+   const atualizacao = vinho.map(elemento => {
         if (elemento === produto) {
             return { ...elemento, quantidade: produto.quantidade + 1 }
         } else {
             return elemento
         }
     })
-    setGin(atualizacao)
+    setVinho(atualizacao)
 }
 
 function diminuir(produto) {
     if (produto.quantidade == 0) {
         return
     }
-    atualizacao = gin.map(elemento => {
+    atualizacao = vinho.map(elemento => {
 
         if (elemento === produto) {
             return { ...elemento, quantidade: produto.quantidade - 1 }
@@ -54,7 +54,7 @@ function diminuir(produto) {
             return elemento
         }
     })
-    setGin(atualizacao)
+    setVinho(atualizacao)
 }
 function colocarNoCarrinho(produto) {
 
@@ -62,7 +62,7 @@ function colocarNoCarrinho(produto) {
         return
     }
 
-    const selecionados = gin.map(elemento => {
+    const selecionados = vinho.map(elemento => {
 
         if (elemento === produto) {
             return { ...elemento, adicionar: true }
@@ -78,7 +78,7 @@ function colocarNoCarrinho(produto) {
     for (let i = 0; i < produtosCarrinho.length; i++) {
         aux = aux + produtosCarrinho[i].quantidade
     }
-    setGin(selecionados)
+    setVinho(selecionados)
     setCarrinho(produtosCarrinho)
     console.log(aux)
     setQuantidadeCarrinho(aux)
@@ -88,7 +88,7 @@ function tirarDoCarrinho(produto) {
     if (produto.adicionar === false) {
         return
     }
-    const selecionados = gin.map(elemento => {
+    const selecionados = vinho.map(elemento => {
         if (elemento === produto) {
             return { ...elemento, adicionar: false, quantidade: 0 }
         } else {
@@ -103,12 +103,12 @@ function tirarDoCarrinho(produto) {
     for (let i = 0; i < produtosCarrinho.length; i++) {
         aux = aux + produtosCarrinho[i].quantidade
     }
-    setGin(selecionados)
+    setVinho(selecionados)
     setCarrinho(produtosCarrinho)
 }
     return (
         <ContainerProduto>
-            {gin.map((produto, index) => <Produto>
+            {vinho.map((produto, index) => <Produto>
                 <button><img src={produto.imagem} /></button>
                 <h5>Preço: R${produto.valor}</h5>
                 <Botoes>
@@ -137,7 +137,7 @@ img{
 
 const ContainerProduto = styledComponents.div`
 display:flex;
-flex-direction:row;`
+flex-direction:column;`
 
 
 const Botoes = styledComponents.div`
