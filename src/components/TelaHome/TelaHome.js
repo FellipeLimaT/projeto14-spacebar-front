@@ -1,15 +1,16 @@
 
 import styledComponents from "styled-components";
-
-import Header from "./Header";
+import GerarProdutos from "./GerarProdutos";
+import Header from "../Header.js";
 
 export default function TelaHome() {
-
+  
+    console.log("tudo bem por aqui")
     return (
         <Section>
             <Header />
             <Main></Main>
-            
+            <GerarProdutos />
         </Section>
     );
 }

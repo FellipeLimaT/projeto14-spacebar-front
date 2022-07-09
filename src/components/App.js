@@ -1,25 +1,44 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import TelaLogin from "./TelaLogin.js";
 import TelaCadastro from "./TelaCadastro.js";
 import TelaCarrinho from "./TelaCarrinho.js";
 import TelaCheckout from "./TelaCheckout.js";
-
-import TelaHome from "./TelaHome.js";
+import TelaHome from "./TelaHome/TelaHome.js"
 import TelaProduto from "./TelaProduto.js";
 import TelaSessaoProduto from "./TelaSessaoProduto";
-
 import TelaConfirmacao from "./TelaConfirmacao";
-
-import { CategoriaBebidas } from "../contexts/BebidasContext.js";
+import BebidasContext from "../contexts/BebidasContext.js";
+import { useState } from "react";
 
 
 function App() {
-    const categorias = ["Vinho", "Gin", "Vodka", "Cerveja"];
+
+
+   const [vinho, setVinho] = useState([])
+   const [cerveja, setCerveja] = useState([])
+   const [whisky, setWhisky] = useState([])
+   const [gin, setGin] = useState([])
+   const [listaProdutos, setListaProdutos] = useState()
+   const [carrinho, setCarrinho] = useState([])
+   const [quantidadeCarrinho, setQuantidadeCarrinho] = useState([])
 
     return (
     
             <BrowserRouter>
+            <BebidasContext.Provider value={{listaProdutos, 
+            setListaProdutos,
+            vinho, 
+            setVinho,
+            cerveja, 
+            setCerveja,
+            whisky, 
+            setWhisky,
+            gin, 
+            setGin,
+            carrinho,
+             setCarrinho,
+             quantidadeCarrinho, 
+             setQuantidadeCarrinho}}>
 
                 <Routes>
                     <Route path='/' element={<TelaHome />} />
@@ -32,6 +51,7 @@ function App() {
                     <Route path='/confirmacao' element={<TelaConfirmacao />} />
 
                 </Routes>
+                </BebidasContext.Provider>
             </BrowserRouter>
         
     )

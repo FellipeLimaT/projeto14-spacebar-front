@@ -21,13 +21,8 @@ export default function Menu({ menu, setMenu }) {
                 <Head>
                     <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
                 </Head>
-                {/* {categorias.map( (categoria, index) => {
-                    const categoriaURL = categoria.toLowerCase();
-                    return <Categoria onClick={() => categoriaClick(categoriaURL)} key={index}>{categoria}</Categoria>
-                })} */}
-                "ola mundo, estou aqui"
+            
             </Aside>
-            {/* <TelaMenuAberta menu={menu} onClick={() => setMenu(false)}></TelaMenuAberta> */}
         </div>
     );
 }
