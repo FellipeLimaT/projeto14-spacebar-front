@@ -1,16 +1,15 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import styled from "styled-components";
-
-
-
+import BebidasContext from "../contexts/BebidasContext";
 import logoheader from "./assets/logoSmall.png";
 import Menu from "./Menu.js";
 
 
 export default function Header() {
-
+    const {  quantidadeCarrinho, } = useContext(BebidasContext)
     const [menu, setMenu] = useState(false);
     const nav = useNavigate();
 
@@ -40,7 +39,7 @@ console.log(menu)
                     <ion-icon name="person-circle-outline" onClick={perfilClick}></ion-icon>
                     <Carrinho>
                         <ion-icon name="cart-outline" onClick={() => {nav("/carrinho")}}></ion-icon>
-                        <p>0</p>
+                        <p>{quantidadeCarrinho}</p>
                     </Carrinho>
                 </Topo_Direita>
 

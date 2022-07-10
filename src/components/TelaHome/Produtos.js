@@ -3,6 +3,7 @@ import BebidasContext from "../../contexts/BebidasContext"
 import styledComponents from "styled-components"
 import { useEffect } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Produtos() {
@@ -23,6 +24,8 @@ export default function Produtos() {
         setQuantidadeCarrinho } = useContext(BebidasContext)
 
     const [novaLista, setNovaLista] = useState([])
+
+    const navigate = useNavigate();
 
     const URL = "http://localhost:5000/produtos"
     let atualizacao;
@@ -139,11 +142,16 @@ export default function Produtos() {
         setCarrinho(produtosCarrinho)
     }
 
+    function irParaProduto(produto){
+        navigate(`/produto/${produto._id}`)
+    }
+
     return (
         <ContainerPrincipal>
             <ContainerProduto>
                 {vinho.map((produto, index) => <Produto>
-                    <button><img src={produto.imagem} /></button>
+                    <h5>{produto.nome}</h5>
+                    <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
                     <h5>Preço: R${produto.valor}</h5>
                     <Botoes>
                         <button onClick={() => aumentar(produto)}>+</button>
@@ -161,7 +169,8 @@ export default function Produtos() {
 
             <ContainerProduto>
                 {cerveja.map((produto, index) => <Produto>
-                    <button><img src={produto.imagem} /></button>
+                    <h5>{produto.nome}</h5>
+                    <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
                     <h5>Preço: R${produto.valor}</h5>
                     <Botoes>
                         <button onClick={() => aumentar(produto)}>+</button>
@@ -179,7 +188,8 @@ export default function Produtos() {
 
             <ContainerProduto>
                 {whisky.map((produto, index) => <Produto>
-                    <button><img src={produto.imagem} /></button>
+                    <h5>{produto.nome}</h5>
+                    <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
                     <h5>Preço: R${produto.valor}</h5>
                     <Botoes>
                         <button onClick={() => aumentar(produto)}>+</button>
@@ -197,7 +207,8 @@ export default function Produtos() {
 
             <ContainerProduto>
                 {gin.map((produto, index) => <Produto>
-                    <button><img src={produto.imagem} /></button>
+                    <h5>{produto.nome}</h5>
+                    <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
                     <h5>Preço: R${produto.valor}</h5>
                     <Botoes>
                         <button onClick={() => aumentar(produto)}>+</button>

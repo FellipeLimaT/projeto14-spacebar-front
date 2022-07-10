@@ -39,7 +39,8 @@ function App() {
             carrinho,
              setCarrinho,
              quantidadeCarrinho, 
-             setQuantidadeCarrinho}}>
+             setQuantidadeCarrinho,
+             categoriaEscolhida, setCategoria}}>
 
                 <Routes>
                     <Route path='/' element={<TelaHome />} />

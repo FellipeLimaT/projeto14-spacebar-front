@@ -11,7 +11,7 @@ export default function Produto({ produto }) {
     }
 
     return (
-        <Item onClick={() => navigate(`/${produtoId}`)}>
+        <Item onClick={() => navigate(`/${_id}`)}>
             <Image src={image} />
             <Title>{title}</Title>
             <Author>{author}</Author>
