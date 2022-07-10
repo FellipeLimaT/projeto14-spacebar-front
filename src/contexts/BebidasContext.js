@@ -1,13 +1,5 @@
 import { createContext } from "react";
 
-export const CategoriaBebidas = createContext();
+const BebidasContext = createContext();
 
-export default function Provider({ children }){
-    const categorias = ["Vinho", "Gin", "Vodka", "Cerveja"];
-
-    return(
-        <CategoriaBebidas.Provider value={{categorias}}>
-            {children}
-        </CategoriaBebidas.Provider>
-    )
-}
+export default BebidasContext;

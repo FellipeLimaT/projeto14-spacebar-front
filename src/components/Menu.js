@@ -6,31 +6,24 @@ import { CategoriaBebidas } from "../contexts/BebidasContext.js";
 
 export default function Menu({ menu, setMenu }) {
     
- /*    const nav = useNavigate();
-    const {categorias} = useContext(CategoriaBebidas)
-    categorias.sort();
+    const nav = useNavigate();
+    // const {categorias} = useContext(CategoriaBebidas)
+    // categorias.sort();
 
-    console.log(categorias) */
-
-    function categoriaClick(categoriaURL){
+   /*  function categoriaClick(categoriaURL){
         setMenu(false);
         nav(`/${categoriaURL}`);
-    }
+    } */
 
     return (
         <div>
             <Aside menu={menu}>
                 <Head>
                     <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
-                </Head>
-                {/* {categorias.map( (categoria, index) => {
-                    const categoriaURL = categoria.toLowerCase();
-                    return <Categoria onClick={() => categoriaClick(categoriaURL)} key={index}>{categoria}</Categoria>
-                })} */}
-                "Ola mundo"
+                </Head>            
             </Aside>
-           {/*  <LadoOpacoMenu menu={menu} onClick={() => setMenu(false)}></LadoOpacoMenu> */}
-            
+            <TelaEscura menu={menu} onClick={() => setMenu(false)}></TelaEscura>
+
         </div>
     );
 }
@@ -55,7 +48,8 @@ const Categoria = styled.div`
     cursor: pointer;
 `
 
-const LadoOpacoMenu = styled.div`
+const TelaEscura = styled.div`
+    display: none;
     display: ${({ menu }) => menu ? "block" : "none"};
     position: fixed;
     top: 0;
@@ -70,12 +64,13 @@ const Head = styled.div`
     align-items: center;
     height: 50px;
     padding-left: 20px;
-    background-color: #064973;
+    background-color: #000000;
     
     ion-icon{
         font-size: 20px;
         width: 20px;
-        color: #F2D5C4;
+        color: #C7C7C7;
         cursor: pointer;
     };
 `;
+
