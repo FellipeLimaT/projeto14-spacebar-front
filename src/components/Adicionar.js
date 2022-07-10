@@ -1,4 +1,4 @@
-export function Adicionar({produto, setNovaLista}){
+export function Adicionar({produto}){
 
 function aumentar(){
     const  atualizacao = {...produto, quantidade: quantidade+1}

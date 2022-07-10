@@ -46,9 +46,9 @@ function App() {
                     <Route path='/' element={<TelaHome />} />
                     <Route path='/login' element={<TelaLogin />} />
                     <Route path='/cadastro' element={<TelaCadastro />} />
-                    <Route path='/produto/:idProduto' elememt={<TelaProduto />} />
-                    <Route path='/:idSessaoProduto' elememt={<TelaSessaoProduto />} />
-                    <Route path='/carrinho' elememt={<TelaCarrinho />} />
+                    <Route path="/produto/:idProduto" element={<TelaProduto />} />
+                    <Route path='/:idSessaoProduto' element={<TelaSessaoProduto />} />
+                    <Route path='/carrinho' element={<TelaCarrinho />} />
                     <Route path='/checkout' element={<TelaCheckout />} />
                     <Route path='/confirmacao' element={<TelaConfirmacao />} />
 

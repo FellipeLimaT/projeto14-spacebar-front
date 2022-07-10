@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import BebidasContext from "../contexts/BebidasContext";
 import { Adicionar } from "./Adicionar";
 import styledComponents from "styled-components";
+import axios from "axios";
 
 export default function TelaProduto() {
 console.log("1")
@@ -21,59 +22,45 @@ console.log("1")
 
     useEffect(() => {
         const promiseProduto = axios.get(URL_PRODUTO)
-        promiseProduto.then(() => gerarProduto(res))
+        promiseProduto.then((res) => gerarProduto(res))
         promiseProduto.catch(() => alert("opsss"))
     }, [])
     console.log("3")
     function gerarProduto(res){
         const produto = res.data
+        console.log(produto)
         const produtoCompleto={
-            ...produto,
+            ...produto[0],
             adicionar: false,
-            quantidade: 0
-        }
+            quantidade: 0}
         console.log(produtoCompleto)
         setProduto(produtoCompleto)
     }
 
 
 
-    // function aumentar(produto) {
+    function aumentar(produto) {
 
-    //     atualizacao = novaLista.map(elemento => {
-    //         if (elemento === produto) {
-    //             return { ...elemento, quantidade: produto.quantidade + 1 }
-    //         } else {
-    //             return elemento
-    //         }
-    //     })
-    //     setNovaLista(atualizacao)
-    //     gerarCategorias(atualizacao)
-    // }
+        const atualizacao = {...produto, quantidade: produto.quantidade+1}
+        setProduto(atualizacao)
+    }
 
     function diminuir(produto) {
-        if (produto.quantidade == 0) {
+        if(produto.quantidade===0){
             return
         }
-        const atualizacao = novaLista.map(elemento => {
 
-            if (elemento === produto) {
-                return { ...elemento, quantidade: produto.quantidade - 1 }
-            } else {
-                return elemento
-            }
-        })
-        setNovaLista(atualizacao)
-        gerarCategorias(atualizacao)
-
+        const atualizacao = {...produto, quantidade: produto.quantidade-1}
+        setProduto(atualizacao)
     }
+    
     function colocarNoCarrinho(produto) {
 
         if (produto.quantidade === 0) {
             return
         }
 
-        const selecionados = novaLista.map(elemento => {
+        const selecionados = listaProdutos.map(elemento => {
 
             if (elemento === produto) {
                 return { ...elemento, adicionar: true }
@@ -90,11 +77,11 @@ console.log("1")
             aux = aux + produtosCarrinho[i].quantidade
         }
 
-        setNovaLista(selecionados)
+        // setNovaLista(selecionados)
         setCarrinho(produtosCarrinho)
         console.log(aux)
         setQuantidadeCarrinho(aux)
-        gerarCategorias(selecionados)
+        // gerarCategorias(selecionados)
     }
 
     function tirarDoCarrinho(produto) {
@@ -116,7 +103,7 @@ console.log("1")
         for (let i = 0; i < produtosCarrinho.length; i++) {
             aux = aux + produtosCarrinho[i].quantidade
         }
-        setVinho(selecionados)
+        // setVinho(selecionados)
         setCarrinho(produtosCarrinho)
     }
 
@@ -125,11 +112,11 @@ console.log("1")
     return (
         <ContainerProduto>
            <Produto>
+           <h5>Preço: R${produto.nome}</h5>
                 <button><img src={produto.imagem} /></button>
                 <h5>Preço: R${produto.valor}</h5>
                 <Botoes>
-                    <Adicionar produto={produto} setNovaLista={setNovaLista}/>
-                    {/* <button onClick={() => aumentar(produto)}>+</button> */}
+                    <button onClick={() => aumentar(produto)}>+</button>
                     <h3>{produto.quantidade}</h3>
                     <button onClick={() => diminuir(produto)}>-</button>
                 </Botoes>
@@ -137,7 +124,6 @@ console.log("1")
                 <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
             </Produto>
-            )
 
         </ContainerProduto>
 
