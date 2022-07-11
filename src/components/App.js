@@ -11,6 +11,7 @@ import BebidasContext from "../contexts/BebidasContext.js";
 import { useState } from "react";
 
 
+
 function App() {
 
 
@@ -22,25 +23,21 @@ function App() {
    const [carrinho, setCarrinho] = useState([])
    const [quantidadeCarrinho, setQuantidadeCarrinho] = useState([])
    const [categoriaEscolhida, setCategoriaEscolhida] = useState("")
+   const [valorTotal, setValorTotal ] = useState()
 
     return (
     
             <BrowserRouter>
-            <BebidasContext.Provider value={{listaProdutos, 
-            setListaProdutos,
-            vinho, 
-            setVinho,
-            cerveja, 
-            setCerveja,
-            whisky, 
-            setWhisky,
-            gin, 
-            setGin,
-            carrinho,
-             setCarrinho,
-             quantidadeCarrinho, 
-             setQuantidadeCarrinho,
-             categoriaEscolhida, setCategoriaEscolhida}}>
+            <BebidasContext.Provider value={{
+            listaProdutos, setListaProdutos,
+            vinho, setVinho,
+            cerveja, setCerveja,
+            whisky, setWhisky,
+            gin, setGin,
+            carrinho, setCarrinho,
+             quantidadeCarrinho, setQuantidadeCarrinho,
+             categoriaEscolhida, setCategoriaEscolhida,
+             valorTotal, setValorTotal}}>
 
                 <Routes>
                     <Route path='/' element={<TelaHome />} />
