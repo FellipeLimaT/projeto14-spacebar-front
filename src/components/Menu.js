@@ -2,8 +2,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { CategoriaBebidas } from "../contexts/BebidasContext.js";
-
 export default function Menu({ menu, setMenu }) {
     
     const navigate = useNavigate();
@@ -20,11 +18,12 @@ export default function Menu({ menu, setMenu }) {
                 <Head>
                     <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
                 </Head>
-            <button onClick={()=>categoriaClick("vinho")}>Vinho</button>
-            <button onClick={()=>categoriaClick("cerveja")}>Cerveja</button>
-            <button onClick={()=>categoriaClick("whisky")}>Whisky</button>
-            <button onClick={()=>categoriaClick("gin")}>Gin</button>
+            <Categoria onClick={()=>categoriaClick("vinho")}>Vinho</Categoria>
+            <Categoria onClick={()=>categoriaClick("cerveja")}>Cerveja</Categoria>
+            <Categoria onClick={()=>categoriaClick("whisky")}>Whisky</Categoria>
+            <Categoria onClick={()=>categoriaClick("gin")}>Gin</Categoria>
             </Aside>
+            <TelaEscura menu={menu} onClick={() => setMenu(false)}></TelaEscura>
         </div>
     );
 }
@@ -33,7 +32,7 @@ const Aside = styled.aside`
     position: fixed;
     z-index: 3;
     top: 0;
-
+    left: ${({ menu }) => menu ? "0" : "-70%"};
     width: 70%;
     height: 100vh;
     background-color: #FFFFFF;
@@ -41,16 +40,17 @@ const Aside = styled.aside`
 
 const Categoria = styled.div`
     display: flex;
+    justify-content: center;
     align-items: center;
     height: 60px;
     padding-left: 15px;
-    border-bottom: 1px solid #064973;
-    color: #064973;
+    border-bottom: 1px solid #000000;
+    color: #000000;
     cursor: pointer;
 `
-// display: ${({ menu }) => menu ? "block" : "none"};
-const TelaMenuAberta = styled.div`
 
+const TelaEscura = styled.div`
+    display: ${({ menu }) => menu ? "block" : "none"};
     position: fixed;
     top: 0;
     z-index: 2;
@@ -64,14 +64,12 @@ const Head = styled.div`
     align-items: center;
     height: 50px;
     padding-left: 20px;
-    background-color: #064973;
+    background-color: #000000;
     
     ion-icon{
         font-size: 20px;
         width: 20px;
-        color: #F2D5C4;
+        color: #C7C7C7;
         cursor: pointer;
     };
 `;
-
-// left: ${(props)=>props.menu=== true? "0" : "-70%"};

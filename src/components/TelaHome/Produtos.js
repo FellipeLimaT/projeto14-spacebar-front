@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import BebidasContext from "../../contexts/BebidasContext"
-import styledComponents from "styled-components"
+import styled from "styled-components"
 import { useEffect } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
@@ -147,15 +147,18 @@ export default function Produtos() {
 
     return (
         <ContainerPrincipal>
+            <h2>Vinho</h2>
             <ContainerProduto>
                 {vinho.map((produto, index) => <Produto>
-                    <h5>{produto.nome}</h5>
                     <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
-                    <h5>Preço: R${produto.valor}</h5>
+                    <NomeProduto>
+                    <h3>{produto.nome}</h3>
+                    </NomeProduto>
+                    <h4>Preço: R${produto.valor}</h4>
                     <Botoes>
-                        <button onClick={() => aumentar(produto)}>+</button>
-                        <h3>{produto.quantidade}</h3>
                         <button onClick={() => diminuir(produto)}>-</button>
+                        <h5>{produto.quantidade}</h5>
+                        <button onClick={() => aumentar(produto)}>+</button>
                     </Botoes>
                     <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
                     <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
@@ -165,16 +168,18 @@ export default function Produtos() {
                 }
 
             </ContainerProduto>
-
+            <h2>Cerveja</h2>
             <ContainerProduto>
                 {cerveja.map((produto, index) => <Produto>
-                    <h5>{produto.nome}</h5>
                     <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
-                    <h5>Preço: R${produto.valor}</h5>
+                    <NomeProduto>
+                    <h3>{produto.nome}</h3>
+                    </NomeProduto>                   
+                    <h4>Preço: R${produto.valor}</h4>
                     <Botoes>
-                        <button onClick={() => aumentar(produto)}>+</button>
-                        <h3>{produto.quantidade}</h3>
                         <button onClick={() => diminuir(produto)}>-</button>
+                        <h5>{produto.quantidade}</h5>
+                        <button onClick={() => aumentar(produto)}>+</button>
                     </Botoes>
                     <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
                     <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
@@ -184,16 +189,18 @@ export default function Produtos() {
                 }
 
             </ContainerProduto>
-
+            <h2>Whisky</h2>
             <ContainerProduto>
                 {whisky.map((produto, index) => <Produto>
-                    <h5>{produto.nome}</h5>
                     <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
-                    <h5>Preço: R${produto.valor}</h5>
+                    <NomeProduto>
+                    <h3>{produto.nome}</h3>
+                    </NomeProduto>
+                    <h4>Preço: R${produto.valor}</h4>
                     <Botoes>
-                        <button onClick={() => aumentar(produto)}>+</button>
-                        <h3>{produto.quantidade}</h3>
                         <button onClick={() => diminuir(produto)}>-</button>
+                        <h5>{produto.quantidade}</h5>
+                        <button onClick={() => aumentar(produto)}>+</button>
                     </Botoes>
                     <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
                     <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
@@ -203,16 +210,18 @@ export default function Produtos() {
                 }
 
             </ContainerProduto>
-
+            <h2>Gin</h2>
             <ContainerProduto>
                 {gin.map((produto, index) => <Produto>
-                    <h5>{produto.nome}</h5>
                     <button onClick={()=>irParaProduto(produto)}><img src={produto.imagem} /></button>
-                    <h5>Preço: R${produto.valor}</h5>
+                    <NomeProduto>
+                    <h3>{produto.nome}</h3>
+                    </NomeProduto>
+                    <h4>Preço: R${produto.valor}</h4>
                     <Botoes>
-                        <button onClick={() => aumentar(produto)}>+</button>
-                        <h3>{produto.quantidade}</h3>
                         <button onClick={() => diminuir(produto)}>-</button>
+                        <h5>{produto.quantidade}</h5>
+                        <button onClick={() => aumentar(produto)}>+</button>
                     </Botoes>
                     <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
                     <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
@@ -227,23 +236,76 @@ export default function Produtos() {
     )
 }
 
-const ContainerPrincipal = styledComponents.div`
+const ContainerPrincipal = styled.div`
+width: 90vw;
+height: 100%;
 display:flex;
-flex-direction:column;`
+align-items: center;
+justify-content: center;
+flex-direction:column;
+background-color: orange;
 
-const Produto = styledComponents.div`
+    h2{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+`
+
+const ContainerProduto = styled.div`
+max-width: 90vw;
+display:flex;
+flex-direction:row;
+margin-bottom: 20px;
+overflow-x: scroll;
+background-color: brown;`
+
+const Produto = styled.div`
+height: 390px;
 display:flex;
 flex-direction:column;
+margin-right:20px;
+background-color: green;
+
 img{
-    width: 50vw;
-    height: 40vh;
-}`
+    width: 140px;
+    height: 30vh;
+}
 
+h4{
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 10px;
+}
 
-const ContainerProduto = styledComponents.div`
+h5{
+    font-size: 17px;
+    font-weight: 400;
+    margin: 5px 10px 10px 10px;
+}
+`
+
+const NomeProduto = styled.div`
+
+width: auto;
+height: 160px;
+
+h3{
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top:7px;
+}
+`
+
+const Botoes = styled.div`
 display:flex;
-flex-direction:row;`
+flex-direction:row;
+align-items: center;
+justify-content: center;
 
-const Botoes = styledComponents.div`
-display:flex;
-flex-direction:column;`
+button{
+    font-size: 15px;
+    font-weight: 700;
+}
+`
