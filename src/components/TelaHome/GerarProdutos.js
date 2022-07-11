@@ -8,21 +8,19 @@ export default function GerarProdutos() {
     console.log("chegou no gerar produtos")
 
     return (
-        <ContainerProduto>
+        <div>
 
-            <Produto>
+            
               <Produtos />
-            </Produto>
+            
 
-        </ContainerProduto>
+        </div>
 
 
     )
 }
 
 const Produto = styledComponents.div`
-postion: fixed;
-top: 50px;
 display:flex;
 flex-direction:column;`
 

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import BebidasContext from "../../contexts/BebidasContext"
-import styledComponents from "styled-components"
+import styled from "styled-components"
 import { useEffect } from "react"
 import axios from "axios"
 import GerarProdutos from "./GerarProdutos";
@@ -142,8 +142,8 @@ export default function Produtos() {
 
     return (
         <ContainerPrincipal>
-            
-                <ContainerProdutos1>
+            <h2>Vinho</h2>
+                <ContainerProdutos>
                     
                     {vinho.map((produto, index) => <Produto>
                         <button><img src={produto.imagem} /></button>
@@ -160,10 +160,10 @@ export default function Produtos() {
                     )
                     }
 
-                </ContainerProdutos1>
+                </ContainerProdutos>
             
-
-            <ContainerProdutos2>
+                <h2>Cerveja</h2>
+            <ContainerProdutos>
                 {cerveja.map((produto, index) => <Produto>
                     <button><img src={produto.imagem} /></button>
                     <h5>Preço: R${produto.valor}</h5>
@@ -179,9 +179,9 @@ export default function Produtos() {
                 )
                 }
 
-            </ContainerProdutos2>
+            </ContainerProdutos>
 
-            <ContainerProdutos1>
+            <ContainerProdutos>
                 {whisky.map((produto, index) => <Produto>
                     <button><img src={produto.imagem} /></button>
                     <h5>Preço: R${produto.valor}</h5>
@@ -197,9 +197,9 @@ export default function Produtos() {
                 )
                 }
 
-            </ContainerProdutos1>
+            </ContainerProdutos>
 
-            <ContainerProdutos2>
+            <ContainerProdutos>
                 {gin.map((produto, index) => <Produto>
                     <button><img src={produto.imagem} /></button>
                     <h5>Preço: R${produto.valor}</h5>
@@ -215,53 +215,50 @@ export default function Produtos() {
                 )
                 }
 
-            </ContainerProdutos2>
+            </ContainerProdutos>
         </ContainerPrincipal>
 
     )
 }
 
-const ContainerPrincipal = styledComponents.div`
+const ContainerPrincipal = styled.div`
 width: 90vw;
 height: 100%;
 display:flex;
 align-items: center;
 justify-content: center;
-
 flex-direction:column;
 background-color: orange;
-`
 
-const ContainerProdutos1 = styledComponents.div`
+    h2{
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+`
+const ContainerProdutos = styled.div`
+max-width: 90vw;
 display:flex;
 flex-direction:row;
 margin-bottom: 20px;
-overflow: hidden;
+overflow-x: scroll;
 background-color: brown;
 
 `
 
-const ContainerProdutos2 = styledComponents.div`
-display:flex;
-flex-direction:row;
-background-color: aqua;
-`
-
-const Produto = styledComponents.div`
-
+const Produto = styled.div`
 display:flex;
 flex-direction:column;
 margin-right:20px;
 background-color: green;
 
 img{
-    width: 30px;
-    height: 20vh;
+    width: 130px;
+    height: 30vh;
 }
 
 `
 
-const Botoes = styledComponents.div`
+const Botoes = styled.div`
 display:flex;
 flex-direction:row;
 align-items: center;

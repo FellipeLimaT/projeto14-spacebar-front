@@ -7,8 +7,6 @@ import { CategoriaBebidas } from "../contexts/BebidasContext.js";
 export default function Menu({ menu, setMenu }) {
     
     const nav = useNavigate();
-    // const {categorias} = useContext(CategoriaBebidas)
-    // categorias.sort();
 
    /*  function categoriaClick(categoriaURL){
         setMenu(false);
