@@ -10,9 +10,8 @@ export default function Categoria() {
 
 
     const { listaProdutos, setListaProdutos, setCarrinho, carrinho, quantidadeCarrinho, setQuantidadeCarrinho, categoriaEscolhida } = useContext(BebidasContext)
-console.log(categoriaEscolhida)
+
     const URL = `http://localhost:5000/categoria/${categoriaEscolhida}`
-    console.log(URL)
 
     const [categoria, setCategoria] = useState([])
 
@@ -49,8 +48,8 @@ console.log(categoriaEscolhida)
         if (produto.quantidade == 0) {
             return
         }
-        atualizacao = categoria.map(elemento => {
-
+    
+        const atualizacao = categoria.map(elemento => {
             if (elemento === produto) {
                 return { ...elemento, quantidade: produto.quantidade - 1 }
             } else {
@@ -65,16 +64,16 @@ console.log(categoriaEscolhida)
         if (produto.quantidade === 0) {
             return
         }
-
+        console.log(listaProdutos)
         const selecionados = listaProdutos.map(elemento => {
 
-            if (elemento === produto) {
+            if (elemento._id === produto._id) {
                 return { ...elemento, adicionar: true, quantidade: produto.quantidade }
             } else {
                 return elemento
             }
         });
-
+        console.log("depois do map", selecionados)
         const produtosCarrinho = selecionados.filter(produto => produto.quantidade !== 0 && produto.adicionar === true)
 
         let aux = 0
@@ -94,8 +93,12 @@ console.log(categoriaEscolhida)
         if (produto.adicionar === false) {
             return
         }
+
+        console.log(listaProdutos)
+        produto.quantidade = 0
+
         const selecionados = listaProdutos.map(elemento => {
-            if (elemento === produto) {
+            if (elemento._id === produto._id) {
                 return { ...elemento, adicionar: false, quantidade: 0 }
             } else {
                 return elemento
@@ -111,6 +114,7 @@ console.log(categoriaEscolhida)
         }
         setListaProdutos(selecionados)
         setCarrinho(produtosCarrinho)
+        setQuantidadeCarrinho(aux)
     }
 
     function irParaProduto(produto) {

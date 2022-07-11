@@ -23,7 +23,6 @@ export default function Produtos() {
         quantidadeCarrinho,
         setQuantidadeCarrinho } = useContext(BebidasContext)
 
-    const [novaLista, setNovaLista] = useState([])
 
     const navigate = useNavigate();
 
@@ -44,17 +43,17 @@ export default function Produtos() {
                 quantidade: 0
             }
         })
-        setNovaLista(nova)
+        setListaProdutos(nova)
         gerarCategorias(nova)
 
     }
 
-    function gerarCategorias(novaLista) {
+    function gerarCategorias(listaProdutos) {
 
-        const gerarVinho = novaLista.filter(produto => produto.categoria === "vinho")
-        const gerarCerveja = novaLista.filter(produto => produto.categoria === "cerveja")
-        const gerarGin = novaLista.filter(produto => produto.categoria === "whisky")
-        const gerarWhsiky = novaLista.filter(produto => produto.categoria === "gin")
+        const gerarVinho = listaProdutos.filter(produto => produto.categoria === "vinho")
+        const gerarCerveja = listaProdutos.filter(produto => produto.categoria === "cerveja")
+        const gerarGin = listaProdutos.filter(produto => produto.categoria === "whisky")
+        const gerarWhsiky = listaProdutos.filter(produto => produto.categoria === "gin")
         setVinho(gerarVinho)
         setCerveja(gerarCerveja)
         setWhisky(gerarWhsiky)
@@ -62,14 +61,14 @@ export default function Produtos() {
     }
     function aumentar(produto) {
 
-        atualizacao = novaLista.map(elemento => {
+        atualizacao = listaProdutos.map(elemento => {
             if (elemento === produto) {
                 return { ...elemento, quantidade: produto.quantidade + 1 }
             } else {
                 return elemento
             }
         })
-        setNovaLista(atualizacao)
+        setListaProdutos(atualizacao)
         gerarCategorias(atualizacao)
     }
 
@@ -77,7 +76,7 @@ export default function Produtos() {
         if (produto.quantidade == 0) {
             return
         }
-        const atualizacao = novaLista.map(elemento => {
+        const atualizacao = listaProdutos.map(elemento => {
 
             if (elemento === produto) {
                 return { ...elemento, quantidade: produto.quantidade - 1 }
@@ -85,7 +84,7 @@ export default function Produtos() {
                 return elemento
             }
         })
-        setNovaLista(atualizacao)
+        setListaProdutos(atualizacao)
         gerarCategorias(atualizacao)
 
     }
@@ -95,7 +94,7 @@ export default function Produtos() {
             return
         }
 
-        const selecionados = novaLista.map(elemento => {
+        const selecionados = listaProdutos.map(elemento => {
 
             if (elemento === produto) {
                 return { ...elemento, adicionar: true }
@@ -112,7 +111,7 @@ export default function Produtos() {
             aux = aux + produtosCarrinho[i].quantidade
         }
 
-        setNovaLista(selecionados)
+        setListaProdutos(selecionados)
         setCarrinho(produtosCarrinho)
         console.log(aux)
         setQuantidadeCarrinho(aux)
