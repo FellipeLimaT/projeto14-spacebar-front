@@ -1,7 +1,8 @@
 
-import styledComponents from "styled-components";
+import styled from "styled-components";
 import GerarProdutos from "./GerarProdutos";
 import Header from "../Header.js";
+import Produtos from "./Produtos";
 
 export default function TelaHome() {
   
@@ -9,16 +10,22 @@ export default function TelaHome() {
     return (
         <Section>
             <Header />
-            <Main></Main>
-            <GerarProdutos />
+            <Main>
+               <GerarProdutos>
+                    <Produtos />
+               </GerarProdutos> 
+            </Main>
         </Section>
     );
 }
 
-const Section = styledComponents.section`
+const Section = styled.section`
     overflow-x: hidden;
 `;
 
-const Main = styledComponents.main`
-    margin: calc(50px + 18%) 10px 0 10px;
+const Main = styled.main`
+    margin: calc(50px + 18%) 0 0 0;
+    display:flex;
+    justify-content: center;    
+    background-color: purple;
 `;

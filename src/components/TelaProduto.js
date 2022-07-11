@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import BebidasContext from "../contexts/BebidasContext";
 import { Adicionar } from "./Adicionar";
-import styledComponents from "styled-components";
+import styled from "styled-components";
 import axios from "axios";
 import Header from "./Header";
 
@@ -80,7 +80,7 @@ export default function TelaProduto() {
             aux = aux + produtosCarrinho[i].quantidade
         }
 
-       setListaProdutos(selecionados)
+        setListaProdutos(selecionados)
         setCarrinho(produtosCarrinho)
         console.log(aux)
         setQuantidadeCarrinho(aux)
@@ -118,40 +118,96 @@ export default function TelaProduto() {
     return (
         <div>
             <Header />
-            <ContainerProduto>
-                <Produto>
-                    <h5>Preço: R${produto.nome}</h5>
-                    <button><img src={produto.imagem} /></button>
-                    <h5>Preço: R${produto.valor}</h5>
-                    <Botoes>
-                        <button onClick={() => aumentar(produto)}>+</button>
-                        <h3>{produto.quantidade}</h3>
+            <Main>
+                <ContainerProduto>
+                    <Produto>
+
+                        <button><img src={produto.imagem} /></button>
+                        <NomeProduto>
+                            <h3>{produto.nome}</h3>
+                        </NomeProduto>
+                        <h4>Preço: R${produto.valor}</h4>
+                        <Botoes>
+                            <button onClick={() => diminuir(produto)}>-</button>
+                            <h5>{produto.quantidade}</h5>
+                            <button onClick={() => aumentar(produto)}>+</button>
+                        </Botoes>
                         <p>Descrição:{produto.descricao}</p>
-                        <button onClick={() => diminuir(produto)}>-</button>
-                    </Botoes>
-                    <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
-                    <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
+                        <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
+                        <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
-                </Produto>
+                    </Produto>
 
-            </ContainerProduto>
+                </ContainerProduto>
+            </Main>
         </div>
     )
 }
-const Produto = styledComponents.div`
+
+const Main = styled.div`
+    margin: calc(50px + 18%) 0 0 0;
+    display:flex;
+    justify-content: center;    
+    background-color: purple;
+`;
+
+const Produto = styled.div`
+height: 390px;
 display:flex;
 flex-direction:column;
+background-color: green;
+
 img{
-    width: 50vw;
-    height: 40vh;
-}`
+    width: 140px;
+    height: 30vh;
+}
+
+h4{
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+h5{
+    font-size: 17px;
+    font-weight: 400;
+    margin: 5px 10px 10px 10px;
+    
+}
+`
 
 
-const ContainerProduto = styledComponents.div`
+const ContainerProduto = styled.div`
+max-width: 90vw;
 display:flex;
-flex-direction:column;`
+flex-direction:row;
+margin-bottom: 20px;
+overflow-x: scroll;
+background-color: brown;`
 
 
-const Botoes = styledComponents.div`
+const NomeProduto = styled.div`
+
+width: auto;
+height: 160px;
+
+h3{
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top:7px;
+}
+`
+
+const Botoes = styled.div`
 display:flex;
-flex-direction:column;`
+flex-direction:row;
+align-items: center;
+justify-content: center;
+
+button{
+    font-size: 15px;
+    font-weight: 700;
+}
+`
