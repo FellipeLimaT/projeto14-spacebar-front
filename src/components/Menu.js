@@ -6,13 +6,12 @@ import { CategoriaBebidas } from "../contexts/BebidasContext.js";
 
 export default function Menu({ menu, setMenu }) {
     
-    // const nav = useNavigate();
-    // const {categorias} = useContext(CategoriaBebidas)
-    // categorias.sort();
+    const navigate = useNavigate();
+    
 
     function categoriaClick(categoriaURL){
         setMenu(false);
-        nav(`/${categoriaURL}`);
+        navigate(`/categoria/${categoriaURL}`);
     }
 
     return (
@@ -22,9 +21,9 @@ export default function Menu({ menu, setMenu }) {
                     <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
                 </Head>
             <button onClick={()=>categoriaClick("vinho")}>Vinho</button>
-            <button onClick={()=>categoriaClick("vinho")}>Cerveja</button>
-            <button onClick={()=>categoriaClick("vinho")}>Whisky</button>
-            <button onClick={()=>categoriaClick("vinho")}>Gin</button>
+            <button onClick={()=>categoriaClick("cerveja")}>Cerveja</button>
+            <button onClick={()=>categoriaClick("whisky")}>Whisky</button>
+            <button onClick={()=>categoriaClick("gin")}>Gin</button>
             </Aside>
         </div>
     );

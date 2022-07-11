@@ -5,11 +5,14 @@ import { useEffect } from "react"
 import axios from "axios"
 
 
-export default function Categotaria() {
+export default function Categoria() {
 
-    const URL = `http://localhost:5000/categoria/${idCategoria}`
 
-    const { listaProdutos, setListaProdutos, setCarrinho, carrinho, quantidadeCarrinho, setQuantidadeCarrinho } = useContext(BebidasContext)
+
+    const { listaProdutos, setListaProdutos, setCarrinho, carrinho, quantidadeCarrinho, setQuantidadeCarrinho, categoriaEscolhida } = useContext(BebidasContext)
+console.log(categoriaEscolhida)
+    const URL = `http://localhost:5000/categoria/${categoriaEscolhida}`
+    console.log(URL)
 
     const [categoria, setCategoria] = useState([])
 
@@ -17,10 +20,10 @@ export default function Categotaria() {
         const promiseGet = axios.get(URL)
         promiseGet.then((res) => gerarCategoria(res))
         promiseGet.catch((res) => console.log("deu ruim"))
-    }, [])
+    }, [categoriaEscolhida])
 
 
-    function gerarCategotia(res) {
+    function gerarCategoria(res) {
         const lista = res.data
         const novaLista = lista.map(produto => {
             return {
@@ -56,6 +59,7 @@ export default function Categotaria() {
         })
         setCategoria(atualizacao)
     }
+
     function colocarNoCarrinho(produto) {
 
         if (produto.quantidade === 0) {

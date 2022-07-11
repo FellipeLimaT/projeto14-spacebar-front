@@ -21,7 +21,7 @@ function App() {
    const [listaProdutos, setListaProdutos] = useState()
    const [carrinho, setCarrinho] = useState([])
    const [quantidadeCarrinho, setQuantidadeCarrinho] = useState([])
-   const [categoriaEscolhida, setCategoria] = useState("")
+   const [categoriaEscolhida, setCategoriaEscolhida] = useState("")
 
     return (
     
@@ -40,14 +40,14 @@ function App() {
              setCarrinho,
              quantidadeCarrinho, 
              setQuantidadeCarrinho,
-             categoriaEscolhida, setCategoria}}>
+             categoriaEscolhida, setCategoriaEscolhida}}>
 
                 <Routes>
                     <Route path='/' element={<TelaHome />} />
                     <Route path='/login' element={<TelaLogin />} />
                     <Route path='/cadastro' element={<TelaCadastro />} />
                     <Route path="/produto/:idProduto" element={<TelaProduto />} />
-                    <Route path='/:idSessaoProduto' element={<TelaSessaoProduto />} />
+                    <Route path='/categoria/:idCategoria' element={<TelaSessaoProduto />} />
                     <Route path='/carrinho' element={<TelaCarrinho />} />
                     <Route path='/checkout' element={<TelaCheckout />} />
                     <Route path='/confirmacao' element={<TelaConfirmacao />} />

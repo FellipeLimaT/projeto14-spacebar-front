@@ -27,7 +27,7 @@ console.log(menu)
             <Topo>
 
                {menu?
-              <Menu/>:
+              <Menu setMenu={setMenu} menu={menu} />:
                 <Topo_Esquerda>
                     <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
                     <Logo src={logoheader} onClick={() => { nav("/") }}></Logo>                  
