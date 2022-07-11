@@ -152,7 +152,6 @@ const Main = styled.div`
     margin: calc(50px + 18%) 0 0 0;
     display:flex;
     justify-content: center;    
-    background-color: purple;
 `;
 
 const Produto = styled.div`
@@ -160,7 +159,8 @@ height: 360px;
 display:flex;
 flex-direction:column;
 margin-bottom:20px;
-background-color: green;
+
+
 
 img{
     width: 140px;
@@ -179,16 +179,21 @@ h5{
     font-weight: 400;
     margin: 5px 10px 10px 10px;
 }
+
+button{ 
+    background-color: #FFFFFF;
+}
 `
 
 const ContainerProduto = styled.div`
 max-width: 90vw;
 display:flex;
-
 flex-direction:column;
 margin-bottom: 20px;
 overflow-x: scroll;
-background-color: brown;`
+background-color: #C7C7C7;
+border: solid 1px #000000;
+`
 
 const NomeProduto = styled.div`
 

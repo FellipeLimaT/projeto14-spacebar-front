@@ -134,7 +134,7 @@ export default function TelaProduto() {
                             <h5>{produto.quantidade}</h5>
                             <button onClick={() => aumentar(produto)}>+</button>
                         </Botoes>
-                        <p>Descrição:{produto.descricao}</p>
+                        <p>Descrição: {produto.descricao}</p>
                         <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
                         <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
@@ -147,17 +147,15 @@ export default function TelaProduto() {
 }
 
 const Main = styled.div`
-    margin: calc(50px + 18%) 0 0 0;
+    margin: calc(60px + 5%) 0 0 0;
     display:flex;
     justify-content: center;    
-    background-color: purple;
 `;
 
 const Produto = styled.div`
-height: 390px;
+height: 550px;
 display:flex;
 flex-direction:column;
-background-color: green;
 
 img{
     width: 140px;
@@ -169,6 +167,7 @@ h4{
     font-weight: 400;
     font-style: italic;
     margin-bottom: 10px;
+    padding: 5px;
 }
 
 h5{
@@ -176,6 +175,17 @@ h5{
     font-weight: 400;
     margin: 5px 10px 10px 10px;
     
+}
+
+p{
+    font-size: 17px;
+    font-weight: 400;
+    padding: 5px;
+}
+
+button{ 
+    background-color: #FFFFFF;
+    border: solid 1px ;
 }
 `
 
@@ -186,7 +196,9 @@ display:flex;
 flex-direction:row;
 margin-bottom: 20px;
 overflow-x: scroll;
-background-color: brown;`
+background-color: #C7C7C7;
+border: solid 1px #000000;
+`
 
 
 const NomeProduto = styled.div`
@@ -199,6 +211,7 @@ h3{
     font-weight: 700;
     margin-bottom: 10px;
     margin-top:7px;
+    padding: 5px;
 }
 `
 
