@@ -66,7 +66,7 @@ export default function TelaProduto() {
         const selecionados = listaProdutos.map(elemento => {
 
             if (elemento._id === produto._id) {
-                return { ...elemento, adicionar: true }
+                return { ...elemento, adicionar: true, quantidade: produto.quantidade }
             } else {
                 return elemento
             }
@@ -84,8 +84,9 @@ export default function TelaProduto() {
         setCarrinho(produtosCarrinho)
         console.log(aux)
         setQuantidadeCarrinho(aux)
-        // gerarCategorias(selecionados)
+        console.log(carrinho)
     }
+
 
     function tirarDoCarrinho(produto) {
         if (produto.quantidade === 0) {
@@ -111,6 +112,7 @@ export default function TelaProduto() {
         }
         setListaProdutos(selecionados)
         setCarrinho(produtosCarrinho)
+        setQuantidadeCarrinho(aux)
     }
 
 
