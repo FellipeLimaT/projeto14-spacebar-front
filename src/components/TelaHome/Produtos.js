@@ -243,7 +243,7 @@ display:flex;
 align-items: center;
 justify-content: center;
 flex-direction:column;
-background-color: orange;
+
 
     h2{
         font-size: 30px;
@@ -257,14 +257,16 @@ display:flex;
 flex-direction:row;
 margin-bottom: 20px;
 overflow-x: scroll;
-background-color: brown;`
+background-color: #C7C7C7;
+border: solid 1px #000000;`
 
 const Produto = styled.div`
-height: 390px;
+height: 450px;
 display:flex;
 flex-direction:column;
 margin-right:20px;
-background-color: green;
+background-color: #FFFFFF;
+border: solid 1px #000000;
 
 img{
     width: 140px;
@@ -276,12 +278,18 @@ h4{
     font-weight: 400;
     font-style: italic;
     margin-bottom: 10px;
+    padding: 5px;
 }
 
 h5{
     font-size: 17px;
     font-weight: 400;
     margin: 5px 10px 10px 10px;
+    padding: 5px;
+}
+
+button{ 
+    
 }
 `
 
@@ -295,6 +303,7 @@ h3{
     font-weight: 700;
     margin-bottom: 10px;
     margin-top:7px;
+    padding: 5px;
 }
 `
 

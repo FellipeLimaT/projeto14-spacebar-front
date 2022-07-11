@@ -27,5 +27,4 @@ const Main = styled.main`
     margin: calc(50px + 18%) 0 0 0;
     display:flex;
     justify-content: center;    
-    background-color: purple;
 `;
