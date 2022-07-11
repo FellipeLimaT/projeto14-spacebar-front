@@ -122,7 +122,7 @@ const ValorTotal = 1000
                     </ContainerItem>
                 )}
                <ResumoDaCompra/>
-               <Finalizar onClick={()=> finalizar()}></Finalizar>
+               <Finalizar onClick={()=>irParaCheckout()}>Confirmar Compra</Finalizar>
             </div>
         </div>
     )
@@ -143,3 +143,7 @@ flex-direction:row;`
 const ContainerResumo = styledComponents.div`
 display:flex;
 flex-direction:row;`
+
+const Finalizar = styledComponents.button`
+border: 0px;
+width: 100vw;`
