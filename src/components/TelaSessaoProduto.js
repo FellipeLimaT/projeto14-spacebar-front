@@ -13,9 +13,13 @@ export default function TelaSessaoProduto() {
     const { idCategoria } = useParams();
     setCategoriaEscolhida(idCategoria)
 
+    function voltarHome(){
+        navigate('/')
+    }
+
     return (
         <div>
-            <Header />
+            <Header onclick={()=>voltarHome()}/>
             <Categoria />
         </div>
 

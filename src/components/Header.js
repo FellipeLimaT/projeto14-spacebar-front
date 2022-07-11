@@ -9,16 +9,22 @@ import Menu from "./Menu.js";
 
 
 export default function Header() {
-    const {  quantidadeCarrinho, } = useContext(BebidasContext)
+    const {  quantidadeCarrinho } = useContext(BebidasContext)
     const [menu, setMenu] = useState(false);
     const nav = useNavigate();
 
+
+    const dataLocalSerializada = localStorage.getItem('user')
+    const dataDesSerelizada = JSON.parse(dataLocalSerializada)
+    const infoLocal = dataDesSerelizada
+
+
     function perfilClick(){
-        if(token === ""){
+        if(infoLocal.token === ""){
             nav("/login");
         }
         else{
-            alert(`Logado como ${userInfo.name}`);
+            alert(`Logado como ${infoLocal.nome}`);
         }
     }
 console.log(menu)

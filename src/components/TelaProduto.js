@@ -19,7 +19,7 @@ export default function TelaProduto() {
     console.log("2")
     const [produto, setProduto] = useState({})
 
-    const URL_PRODUTO = `http://localhost:5000/produtos/${idProduto}`
+    const URL_PRODUTO = `https://spacebardriven.herokuapp.com/${idProduto}`
 
     useEffect(() => {
         const promiseProduto = axios.get(URL_PRODUTO)
@@ -114,12 +114,14 @@ export default function TelaProduto() {
         setCarrinho(produtosCarrinho)
         setQuantidadeCarrinho(aux)
     }
-
+    function voltarHome(){
+        navigate('/')
+    }
 
 
     return (
         <div>
-            <Header />
+            <Header onClick={()=>voltarHome()} />
             <Main>
                 <ContainerProduto>
                     <Produto>
@@ -147,7 +149,8 @@ export default function TelaProduto() {
 }
 
 const Main = styled.div`
-    margin: calc(60px + 5%) 0 0 0;
+    position: relative;
+    top: 200px;
     display:flex;
     justify-content: center;    
 `;

@@ -12,7 +12,7 @@ export default function TelaLogin() {
     const navigate = useNavigate();
 
     const userInfo = { email, senha }
-    const POST_URL = 'http://localhost:5000/login'
+    const POST_URL = 'https://spacebardriven.herokuapp.com/login'
 
     function enviarDadosUser(e) {
         e.preventDefault();

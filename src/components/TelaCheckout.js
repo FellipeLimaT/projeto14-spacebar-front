@@ -4,10 +4,13 @@ import styledComponents from "styled-components"
 import axios from 'axios'
 import { useEffect } from "react"
 import Header from "./Header"
+import { useNavigate } from "react-router-dom"
 
 export default function TelaCheckout() {
 
     const { valorTotal, carrinho } = useContext(BebidasContext)
+
+    const navigate= useNavigate();
 
     const dataLocalSerializada = localStorage.getItem('user')
     const dataDesSerelizada = JSON.parse(dataLocalSerializada)
@@ -30,7 +33,7 @@ export default function TelaCheckout() {
     const [numero, setNumero] = useState()
     const [complemento, setComplemento] = useState()
 
-    const URLPedido = "http://localhost:5000/pedidos"
+    const URLPedido = "https://spacebardriven.herokuapp.com/pedidos"
 
 function editarCep(e){
     if (e.target.value.length === 5) {
@@ -104,11 +107,15 @@ function editarCep(e){
         const promisePedidos = axios.post(URLPedido, body, config )
         promisePedidos.then(()=> alert("tudo vcerto"))
         promisePedidos.then(()=> alert("deu ruin"))
-}
+    }
+
+    function voltarHome(){
+        navigate('/')
+    }
 
     return (
         <>
-        <Header />
+        <Header onClick={()=>voltarHome()} />
         <ContainerPrincipal>
             <ContainerEntrega>
                 <h2> Informações de Entrega</h2>

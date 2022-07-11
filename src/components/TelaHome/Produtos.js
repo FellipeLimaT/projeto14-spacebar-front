@@ -26,7 +26,7 @@ export default function Produtos() {
 
     const navigate = useNavigate();
 
-    const URL = "http://localhost:5000/produtos"
+    const URL = "https://spacebardriven.herokuapp.com/produtos"
     let atualizacao;
     useEffect(() => {
         const promiseGet = axios.get(URL)
@@ -243,8 +243,6 @@ display:flex;
 align-items: center;
 justify-content: center;
 flex-direction:column;
-
-
     h2{
         font-size: 30px;
         margin-bottom: 20px;
@@ -301,7 +299,7 @@ height: 160px;
 h3{
     font-size: 17px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 10px;    
     margin-top:7px;
     padding: 5px;
 }

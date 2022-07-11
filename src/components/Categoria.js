@@ -14,7 +14,7 @@ export default function Categoria() {
 
     const navigate = useNavigate();
 
-    const URL = `http://localhost:5000/categoria/${categoriaEscolhida}`
+    const URL = `https://spacebardriven.herokuapp.com/${categoriaEscolhida}`
 
     const [categoria, setCategoria] = useState([])
 
