@@ -5,17 +5,18 @@ import BebidasContext from "../contexts/BebidasContext";
 import { Adicionar } from "./Adicionar";
 import styledComponents from "styled-components";
 import axios from "axios";
+import Header from "./Header";
 
 export default function TelaProduto() {
-console.log("1")
-    const { idProduto} = useParams(); 
+    console.log("1")
+    const { idProduto } = useParams();
 
     const { listaProdutos,
         setListaProdutos, carrinho,
         setCarrinho,
         quantidadeCarrinho,
         setQuantidadeCarrinho } = useContext(BebidasContext)
-        console.log("2")
+    console.log("2")
     const [produto, setProduto] = useState({})
 
     const URL_PRODUTO = `http://localhost:5000/produtos/${idProduto}`
@@ -26,13 +27,14 @@ console.log("1")
         promiseProduto.catch(() => alert("opsss"))
     }, [])
     console.log("3")
-    function gerarProduto(res){
+    function gerarProduto(res) {
         const produto = res.data
         console.log(produto)
-        const produtoCompleto={
+        const produtoCompleto = {
             ...produto[0],
             adicionar: false,
-            quantidade: 0}
+            quantidade: 0
+        }
         console.log(produtoCompleto)
         setProduto(produtoCompleto)
     }
@@ -41,19 +43,19 @@ console.log("1")
 
     function aumentar(produto) {
 
-        const atualizacao = {...produto, quantidade: produto.quantidade+1}
+        const atualizacao = { ...produto, quantidade: produto.quantidade + 1 }
         setProduto(atualizacao)
     }
 
     function diminuir(produto) {
-        if(produto.quantidade===0){
+        if (produto.quantidade === 0) {
             return
         }
 
-        const atualizacao = {...produto, quantidade: produto.quantidade-1}
+        const atualizacao = { ...produto, quantidade: produto.quantidade - 1 }
         setProduto(atualizacao)
     }
-    
+
     function colocarNoCarrinho(produto) {
 
         if (produto.quantidade === 0) {
@@ -110,23 +112,26 @@ console.log("1")
 
 
     return (
-        <ContainerProduto>
-           <Produto>
-           <h5>Preço: R${produto.nome}</h5>
-                <button><img src={produto.imagem} /></button>
-                <h5>Preço: R${produto.valor}</h5>
-                <Botoes>
-                    <button onClick={() => aumentar(produto)}>+</button>
-                    <h3>{produto.quantidade}</h3>
-                    <button onClick={() => diminuir(produto)}>-</button>
-                </Botoes>
-                <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
-                <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
+        <div>
+            <Header />
+            <ContainerProduto>
+                <Produto>
+                    <h5>Preço: R${produto.nome}</h5>
+                    <button><img src={produto.imagem} /></button>
+                    <h5>Preço: R${produto.valor}</h5>
+                    <Botoes>
+                        <button onClick={() => aumentar(produto)}>+</button>
+                        <h3>{produto.quantidade}</h3>
+                        <p>Descrição:{produto.descricao}</p>
+                        <button onClick={() => diminuir(produto)}>-</button>
+                    </Botoes>
+                    <button onClick={() => colocarNoCarrinho(produto)}>Adicionar</button>
+                    <button onClick={() => tirarDoCarrinho(produto)}>Remover</button>
 
-            </Produto>
+                </Produto>
 
-        </ContainerProduto>
-
+            </ContainerProduto>
+        </div>
     )
 }
 const Produto = styledComponents.div`

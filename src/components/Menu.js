@@ -21,7 +21,10 @@ export default function Menu({ menu, setMenu }) {
                 <Head>
                     <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
                 </Head>
-            
+            <button onClick={()=>categoriaClick("vinho")}>Vinho</button>
+            <button onClick={()=>categoriaClick("vinho")}>Cerveja</button>
+            <button onClick={()=>categoriaClick("vinho")}>Whisky</button>
+            <button onClick={()=>categoriaClick("vinho")}>Gin</button>
             </Aside>
         </div>
     );

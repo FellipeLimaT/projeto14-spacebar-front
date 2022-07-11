@@ -1,11 +1,14 @@
 import { useContext } from "react"
 import BebidasContext from "../contexts/BebidasContext"
-import Vinho from "./Vinho"
+import Vinho from "./Categoria"
 import Cerveja from "./Cerveja.js"
 import Gin from "./Gin.js"
 import Whisky from "./Whisky.js"
+import { useParams } from "react-router-dom"
 
 export default function TelaSessaoProduto(){
+
+    const {idSessaoProduto} = useParams();
 
     const { 
         vinho, 
@@ -25,14 +28,7 @@ export default function TelaSessaoProduto(){
 
     return(
         <div>
-             {categoriaEscolhida==="vinho"? < Vinho/>:""
-        }
-         {categoriaEscolhida==="cerveja"? <Cerveja/>:""
-        }
-         {categoriaEscolhida==="whisky"? <Whisky/>:""
-        }
-         {categoriaEscolhida==="gin"? <Gin/>:""
-        }
+      <Categoria idSessaoProduto={idSessaoProduto}/>
         </div>
        
         
