@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import BebidasContext from "../contexts/BebidasContext"
-import styledComponents from "styled-components"
+import styled from "styled-components"
 import Header from './Header.js'
 import ResumoDaCompra from "./ResumoDaCompra"
 import { useNavigate } from "react-router-dom"
@@ -92,58 +92,148 @@ export default function TelaCarrinho() {
     function irParaProduto(produto) {
         navigate(`/produto/${produto._id}`)
     }
-function irParaCheckout(){
-    navigate('/checkout' )
-}
-const ValorTotal = 1000
-    
+    function irParaCheckout() {
+        navigate('/checkout')
+    }
+    const ValorTotal = 1000
+
     console.log(ValorTotal)
     return (
         <div>
             <Header />
-            <h1>Seu Space-Bar</h1>
-            <div>
-                {carrinho.map((produto) =>  <ContainerItem>
-                        <Info>
-                            <h3>{produto.nome}</h3>
+            <Main>
+                <div>
+                    <h1>CARRINHO - Seu SpaceBar</h1>
+                </div>
+
+                <ContainerProduto>
+                    <div>
+                        {carrinho.map((produto) => <ContainerItem>
+
                             <button onClick={() => irParaProduto(produto)}><img src={produto.imagem} /></button>
-                            <h2>Preço do item: R$ {produto.valor}</h2>
-                        </Info>
-                        <ContainerVerificacao>
-                            <h2>R$ {produto.quantidade * produto.valor}</h2>
-                            <ContainerBotoes>
-                                <button onClick={() => aumentar(produto)}>+</button>
-                                <h3>{produto.quantidade}</h3>
-                                <button onClick={() => diminuir(produto)}>-</button>
-                                </ContainerBotoes>
-                                <button onClick={() => tirarDoCarrinho(produto)}>Remover do Carrinho</button>
-                 
-                        </ContainerVerificacao>
-                    </ContainerItem>
-                )}
-               <ResumoDaCompra/>
-               <Finalizar onClick={()=>irParaCheckout()}>Confirmar Compra</Finalizar>
-            </div>
+                            <Info>
+
+                                <h2>{produto.nome}</h2>
+                                <h3>R$ {produto.quantidade * produto.valor}</h3>
+
+                                <ContadorQtd>
+                                    <button onClick={() => diminuir(produto)}>-</button>
+                                    <h4>{produto.quantidade}</h4>
+                                    <button onClick={() => aumentar(produto)}>+</button>
+                                </ContadorQtd>
+
+                            </Info>
+
+                            <RemoverCarrinho>
+                                <button onClick={() => tirarDoCarrinho(produto)}>X</button>
+                            </RemoverCarrinho>
+
+                        </ContainerItem>
+
+                        )}
+
+                        <ContainerConfirmacao>
+                            <ResumoDaCompra />
+                            <Finalizar onClick={() => irParaCheckout()}>Confirmar Compra</Finalizar>
+                        </ContainerConfirmacao>
+                    </div>
+                </ContainerProduto>
+
+
+
+
+            </Main>
         </div>
     )
 }
 
-const ContainerItem = styledComponents.div`
-display:flex;
-flex-direction:row;`
-const Info = styledComponents.div`
-display:flex;
-flex-direction:column;`
-const ContainerVerificacao = styledComponents.div`
-display:flex;
-flex-direction:column;`
-const ContainerBotoes = styledComponents.div`
-display:flex;
-flex-direction:row;`
-const ContainerResumo = styledComponents.div`
-display:flex;
-flex-direction:row;`
+const Main = styled.div`
+    margin: calc(50px + 18%) 0 0 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h1{
+        font-size: 22px;
+        margin-bottom: 40px;
+    }
 
-const Finalizar = styledComponents.button`
+    button{
+    width: 30vw;
+    height: 20vh;
+    margin-right: 5px;
+}
+`;
+
+const RemoverCarrinho = styled.div`
+
+button{
+    width: 20px;
+    height: 20px;
+}
+`
+
+const ContadorQtd = styled.div`
+
+display: flex;
+
+button{
+    width: 20px;
+    height: 20px;
+}
+`
+
+
+const ContainerProduto = styled.div`
+
+width: 90vw;
+height: 150px;
+margin-bottom: 15px;
+display: flex;
+
+img{
+    width: 20vw;
+    height: 18vh;
+}
+`
+
+const ContainerItem = styled.div`
+display:flex;
+margin-bottom: 20px;
+background-color: orange;
+`
+
+
+const Info = styled.div`
+display:flex;
+flex-direction:column;
+
+h3{
+        font-size: 15px;
+        font-weight: 400;
+        font-style: italic;
+        margin: 10px 0;
+}
+
+h4{
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0 10px;
+}
+`
+
+const ContainerConfirmacao = styled.div`
+display:flex;
+flex-direction:column;
+align-items: center;
+
+button{
+    width: 150px;
+    height: 40px;
+    margin: 15px 0;
+}
+`
+
+const Finalizar = styled.button`
 border: 0px;
 width: 100vw;`
