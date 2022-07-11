@@ -18,7 +18,7 @@ export default function ResumoDaCompra(){
         setValorTotal(aux)
     return(    
     <ContainerResumo>
-        <h2>Total da compra:</h2>
+        <h2>Total da compra: R$</h2>
         <h2>{valorTotal}</h2>
         </ContainerResumo>)
 

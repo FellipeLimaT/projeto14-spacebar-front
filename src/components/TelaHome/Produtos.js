@@ -259,7 +259,7 @@ background-color: #C7C7C7;
 border: solid 1px #000000;`
 
 const Produto = styled.div`
-height: 450px;
+height: 460px;
 display:flex;
 flex-direction:column;
 margin-right:20px;
