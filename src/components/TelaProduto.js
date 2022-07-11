@@ -61,10 +61,11 @@ export default function TelaProduto() {
         if (produto.quantidade === 0) {
             return
         }
+        console.log(listaProdutos)
 
         const selecionados = listaProdutos.map(elemento => {
 
-            if (elemento === produto) {
+            if (elemento._id === produto._id) {
                 return { ...elemento, adicionar: true }
             } else {
                 return elemento
@@ -79,7 +80,7 @@ export default function TelaProduto() {
             aux = aux + produtosCarrinho[i].quantidade
         }
 
-        // setNovaLista(selecionados)
+       setListaProdutos(selecionados)
         setCarrinho(produtosCarrinho)
         console.log(aux)
         setQuantidadeCarrinho(aux)
@@ -87,11 +88,14 @@ export default function TelaProduto() {
     }
 
     function tirarDoCarrinho(produto) {
-        if (produto.adicionar === false) {
+        if (produto.quantidade === 0) {
             return
         }
-        const selecionados = vinho.map(elemento => {
-            if (elemento === produto) {
+
+        produto.quantidade = 0
+
+        const selecionados = listaProdutos.map(elemento => {
+            if (elemento._id === produto._id) {
                 return { ...elemento, adicionar: false, quantidade: 0 }
             } else {
                 return elemento
@@ -105,7 +109,7 @@ export default function TelaProduto() {
         for (let i = 0; i < produtosCarrinho.length; i++) {
             aux = aux + produtosCarrinho[i].quantidade
         }
-        // setVinho(selecionados)
+        setListaProdutos(selecionados)
         setCarrinho(produtosCarrinho)
     }
 

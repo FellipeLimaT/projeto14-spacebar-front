@@ -3,6 +3,7 @@ import BebidasContext from "../contexts/BebidasContext.js"
 import styledComponents from "styled-components"
 import { useEffect } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Categoria() {
@@ -10,6 +11,8 @@ export default function Categoria() {
 
 
     const { listaProdutos, setListaProdutos, setCarrinho, carrinho, quantidadeCarrinho, setQuantidadeCarrinho, categoriaEscolhida } = useContext(BebidasContext)
+
+    const navigate = useNavigate();
 
     const URL = `http://localhost:5000/categoria/${categoriaEscolhida}`
 
