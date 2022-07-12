@@ -19,7 +19,7 @@ export default function TelaProduto() {
     console.log("2")
     const [produto, setProduto] = useState({})
 
-    const URL_PRODUTO = `https://spacebardriven.herokuapp.com/${idProduto}`
+    const URL_PRODUTO = `https://git.heroku.com/projeto14-spacebar-back.git/${idProduto}`
 
     useEffect(() => {
         const promiseProduto = axios.get(URL_PRODUTO)

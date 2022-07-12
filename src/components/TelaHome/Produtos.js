@@ -26,7 +26,7 @@ export default function Produtos() {
 
     const navigate = useNavigate();
 
-    const URL = "https://spacebardriven.herokuapp.com/produtos"
+    const URL = "https://git.heroku.com/projeto14-spacebar-back.git/produtos"
     let atualizacao;
     useEffect(() => {
         const promiseGet = axios.get(URL)
