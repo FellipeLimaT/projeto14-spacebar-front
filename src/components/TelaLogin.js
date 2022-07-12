@@ -12,7 +12,7 @@ export default function TelaLogin() {
     const navigate = useNavigate();
 
     const userInfo = { email, senha }
-    const POST_URL = 'https://git.heroku.com/projeto14-spacebar-back.git/login'
+    const POST_URL = 'https://projeto14-spacebar-back.herokuapp.com/login'
 
     function enviarDadosUser(e) {
         e.preventDefault();
