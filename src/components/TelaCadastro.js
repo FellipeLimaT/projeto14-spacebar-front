@@ -38,7 +38,7 @@ export default function TelaCadastro() {
 
     function CadastrarDadosUser() {
 
-        const POST_URL = 'https://spacebardriven.herokuapp.com/cadastro'
+        const POST_URL = 'https://git.heroku.com/projeto14-spacebar-back.git//cadastro'
         const promiseCadastrar = axios.post(POST_URL, infoCadastro)
 
         promiseCadastrar.then(() => IrParaLogin())

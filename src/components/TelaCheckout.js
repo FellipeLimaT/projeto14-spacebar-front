@@ -33,7 +33,7 @@ export default function TelaCheckout() {
     const [numero, setNumero] = useState()
     const [complemento, setComplemento] = useState()
 
-    const URLPedido = "https://spacebardriven.herokuapp.com/pedidos"
+    const URLPedido = "https://git.heroku.com/projeto14-spacebar-back.git/pedidos"
 
 function editarCep(e){
     if (e.target.value.length === 5) {

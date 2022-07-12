@@ -14,7 +14,7 @@ export default function Categoria() {
 
     const navigate = useNavigate();
 
-    const URL = `https://spacebardriven.herokuapp.com/${categoriaEscolhida}`
+    const URL = `https://git.heroku.com/projeto14-spacebar-back.git/${categoriaEscolhida}`
 
     const [categoria, setCategoria] = useState([])
 
